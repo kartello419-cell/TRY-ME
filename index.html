@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>TRY ME — Find Your Forever</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#f8f3e8;font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #403019;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:900;color:#e8bd68;letter-spacing:2px}
+small,.muted{color:#b9b0a0}
+main{max-width:480px;margin:auto;padding:24px 18px}
+h1{font-size:38px;line-height:1.1;margin:18px 0}
+.gold{color:#e8bd68}
+.card{background:#141311;border:1px solid #44351e;border-radius:18px;padding:20px;margin:18px 0}
+input,select,textarea{width:100%;padding:14px;margin:8px 0 14px;background:#090909;border:1px solid #52452f;border-radius:10px;color:white;font-size:16px}
+button{background:#e8bd68;color:#111;border:0;border-radius:11px;padding:14px;font-weight:bold;font-size:15px;width:100%;cursor:pointer;margin:6px 0}
+button.secondary{background:#211c13;color:#e8bd68;border:1px solid #66502c}
+nav{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}
+nav button{width:auto;flex:1;min-width:75px;padding:11px 7px}
+.hidden{display:none}
+.profile{border-radius:15px;background:#211c13;padding:17px;margin:12px 0;border:1px solid #44351e}
+footer{text-align:center;color:#928977;padding:28px 10px;font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="logo">TRY ME 💛</div><small>FIND YOUR FOREVER</small></header>
+<main>
+<section id="welcome">
+<p class="gold">LOVE WITH PURPOSE</p>
+<h1>One connection<br>can change <span class="gold">everything.</span></h1>
+<p class="muted">Meet people who are ready for something real. Friendship, commitment and marriage start here.</p>
+<div class="card">
+<h3>Create your profile</h3>
+<p class="muted">For adults aged 18 and above.</p>
+<label>Your display name</label><input id="name" placeholder="What should we call you?">
+<label>Your age</label><input id="age" type="number" min="18" placeholder="18 or older">
+<label>Your country</label><input id="country" placeholder="e.g. Kenya">
+<label>What are you looking for?</label>
+<select id="goal"><option>Marriage</option><option>Serious relationship</option><option>Life partner</option><option>Friendship first</option></select>
+<button onclick="enterApp()">Enter TRY ME →</button>
+<p class="muted" style="font-size:12px">Demo only: this prototype does not create a real account.</p>
+</div>
+</section>
+<section id="app" class="hidden">
+<p class="gold">WELCOME TO YOUR NEXT CHAPTER</p>
+<h1>Hello, <span id="hello"></span> 💛</h1>
+<p class="muted">Your journey to a meaningful connection starts here.</p>
+<nav>
+<button onclick="showTab('discover')">Discover</button>
+<button onclick="showTab('likes')">Likes</button>
+<button onclick="showTab('messages')">Messages</button>
+<button onclick="showTab('profile')">Profile</button>
+</nav>
+<div id="discover" class="tab card">
+<h2>Discover</h2><p class="muted">Sample profiles — not real members.</p>
+<div class="profile"><h3>Amina, 26</h3><p>Kenya · Family-minded · Loves travel</p><button onclick="like('Amina')">💛 Like</button></div>
+<div class="profile"><h3>Daniel, 29</h3><p>Uganda · Kind-hearted · Values commitment</p><button onclick="like('Daniel')">💛 Like</button></div>
+<div class="profile"><h3>Grace, 25</h3><p>Ghana · Creative · Looking for marriage</p><button onclick="like('Grace')">💛 Like</button></div>
+<p id="feedback" class="gold"></p>
+</div>
+<div id="likes" class="tab card hidden"><h2>Your likes</h2><p id="likelist">You haven't liked anyone yet.</p></div>
+<div id="messages" class="tab card hidden"><h2>Messages</h2><p>Private messaging will be available after secure accounts and matching are connected.</p></div>
+<div id="profile" class="tab card hidden"><h2>Your profile</h2><p id="details"></p><button class="secondary" onclick="location.reload()">Exit demo</button></div>
+<div class="card"><h3>Go Premium ✨</h3><p>Free — KSh 0</p><p>Premium — KSh 500</p><p>Premium Plus — KSh 1,000</p><p class="muted">Preview prices only. Payments are not connected.</p></div>
+<div class="card"><h3>Need help?</h3><button class="secondary" onclick="window.open('https://chatgpt.com/','_blank')">Contact AI</button><button class="secondary" onclick="window.location.href='mailto:balesaniccur@gmail.com'">Contact owner</button></div>
+</section>
+</main>
+<footer>TRY ME © 2026 · Built for meaningful connections worldwide<br>Prototype only · Never send money to unverified profiles</footer>
+<script>
+let liked=[];
+function enterApp(){
+ const n=document.getElementById('name').value.trim();
+ const a=Number(document.getElementById('age').value);
+ const c=document.getElementById('country').value.trim();
+ if(!n||!a||!c){alert('Please complete all fields.');return}
+ if(a<18){alert('TRY ME is for adults aged 18 and above.');return}
+ document.getElementById('hello').textContent=n;
+ document.getElementById('details').textContent=n+' · '+a+' · '+c+' · Looking for '+document.getElementById('goal').value;
+ document.getElementById('welcome').classList.add('hidden');
+ document.getElementById('app').classList.remove('hidden');
+}
+function showTab(id){
+ document.querySelectorAll('.tab').forEach(e=>e.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+}
+function like(n){
+ if(!liked.includes(n))liked.push(n);
+ document.getElementById('likelist').textContent=liked.join(', ')||"You haven't liked anyone yet.";
+ document.getElementById('feedback').textContent='You liked '+n+' 💛 (demo only)';
+}
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>TRY ME — Find Your Forever</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#f8f3e8;font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #403019;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:900;color:#e8bd68;letter-spacing:2px}
+small,.muted{color:#b9b0a0}
+main{max-width:480px;margin:auto;padding:24px 18px}
+h1{font-size:38px;line-height:1.1;margin:18px 0}
+.gold{color:#e8bd68}
+.card{background:#141311;border:1px solid #44351e;border-radius:18px;padding:20px;margin:18px 0}
+input,select,textarea{width:100%;padding:14px;margin:8px 0 14px;background:#090909;border:1px solid #52452f;border-radius:10px;color:white;font-size:16px}
+button{background:#e8bd68;color:#111;border:0;border-radius:11px;padding:14px;font-weight:bold;font-size:15px;width:100%;cursor:pointer;margin:6px 0}
+button.secondary{background:#211c13;color:#e8bd68;border:1px solid #66502c}
+nav{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}
+nav button{width:auto;flex:1;min-width:75px;padding:11px 7px}
+.hidden{display:none}
+.profile{border-radius:15px;background:#211c13;padding:17px;margin:12px 0;border:1px solid #44351e}
+footer{text-align:center;color:#928977;padding:28px 10px;font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="logo">TRY ME 💛</div><small>FIND YOUR FOREVER</small></header>
+<main>
+<section id="welcome">
+<p class="gold">LOVE WITH PURPOSE</p>
+<h1>One connection<br>can change <span class="gold">everything.</span></h1>
+<p class="muted">Meet people who are ready for something real. Friendship, commitment and marriage start here.</p>
+<div class="card">
+<h3>Create your profile</h3>
+<p class="muted">For adults aged 18 and above.</p>
+<label>Your display name</label><input id="name" placeholder="What should we call you?">
+<label>Your age</label><input id="age" type="number" min="18" placeholder="18 or older">
+<label>Your country</label><input id="country" placeholder="e.g. Kenya">
+<label>What are you looking for?</label>
+<select id="goal"><option>Marriage</option><option>Serious relationship</option><option>Life partner</option><option>Friendship first</option></select>
+<button onclick="enterApp()">Enter TRY ME →</button>
+<p class="muted" style="font-size:12px">Demo only: this prototype does not create a real account.</p>
+</div>
+</section>
+<section id="app" class="hidden">
+<p class="gold">WELCOME TO YOUR NEXT CHAPTER</p>
+<h1>Hello, <span id="hello"></span> 💛</h1>
+<p class="muted">Your journey to a meaningful connection starts here.</p>
+<nav>
+<button onclick="showTab('discover')">Discover</button>
+<button onclick="showTab('likes')">Likes</button>
+<button onclick="showTab('messages')">Messages</button>
+<button onclick="showTab('profile')">Profile</button>
+</nav>
+<div id="discover" class="tab card">
+<h2>Discover</h2><p class="muted">Sample profiles — not real members.</p>
+<div class="profile"><h3>Amina, 26</h3><p>Kenya · Family-minded · Loves travel</p><button onclick="like('Amina')">💛 Like</button></div>
+<div class="profile"><h3>Daniel, 29</h3><p>Uganda · Kind-hearted · Values commitment</p><button onclick="like('Daniel')">💛 Like</button></div>
+<div class="profile"><h3>Grace, 25</h3><p>Ghana · Creative · Looking for marriage</p><button onclick="like('Grace')">💛 Like</button></div>
+<p id="feedback" class="gold"></p>
+</div>
+<div id="likes" class="tab card hidden"><h2>Your likes</h2><p id="likelist">You haven't liked anyone yet.</p></div>
+<div id="messages" class="tab card hidden"><h2>Messages</h2><p>Private messaging will be available after secure accounts and matching are connected.</p></div>
+<div id="profile" class="tab card hidden"><h2>Your profile</h2><p id="details"></p><button class="secondary" onclick="location.reload()">Exit demo</button></div>
+<div class="card"><h3>Go Premium ✨</h3><p>Free — KSh 0</p><p>Premium — KSh 500</p><p>Premium Plus — KSh 1,000</p><p class="muted">Preview prices only. Payments are not connected.</p></div>
+<div class="card"><h3>Need help?</h3><button class="secondary" onclick="window.open('https://chatgpt.com/','_blank')">Contact AI</button><button class="secondary" onclick="window.location.href='mailto:balesaniccur@gmail.com'">Contact owner</button></div>
+</section>
+</main>
+<footer>TRY ME © 2026 · Built for meaningful connections worldwide<br>Prototype only · Never send money to unverified profiles</footer>
+<script>
+let liked=[];
+function enterApp(){
+ const n=document.getElementById('name').value.trim();
+ const a=Number(document.getElementById('age').value);
+ const c=document.getElementById('country').value.trim();
+ if(!n||!a||!c){alert('Please complete all fields.');return}
+ if(a<18){alert('TRY ME is for adults aged 18 and above.');return}
+ document.getElementById('hello').textContent=n;
+ document.getElementById('details').textContent=n+' · '+a+' · '+c+' · Looking for '+document.getElementById('goal').value;
+ document.getElementById('welcome').classList.add('hidden');
+ document.getElementById('app').classList.remove('hidden');
+}
+function showTab(id){
+ document.querySelectorAll('.tab').forEach(e=>e.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+}
+function like(n){
+ if(!liked.includes(n))liked.push(n);
+ document.getElementById('likelist').textContent=liked.join(', ')||"You haven't liked anyone yet.";
+ document.getElementById('feedback').textContent='You liked '+n+' 💛 (demo only)';
+}
+</script>
+</body>
+</html>
