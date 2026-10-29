@@ -4,112 +4,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090909">
+<meta name="theme-color" content="#0b0a09">
 <title>TRY ME | Find Your Forever</title>
 <style>
-:root{--gold:#e1b65b;--bg:#090909;--card:#171717;--line:#393020;--text:#fff8e9;--muted:#aaa}
+:root{--bg:#0b0a09;--panel:#171411;--gold:#e0bb65;--text:#fff8eb;--muted:#b5aa98;--line:#393024}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{position:sticky;top:0;background:#0b0b0b;border-bottom:1px solid var(--line);padding:17px;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.logo{font-size:25px;font-weight:900;letter-spacing:3px;color:var(--gold)}
-.logo small{display:block;font-size:9px;letter-spacing:2px;margin-top:4px;color:#ddd}
-main{max-width:900px;margin:auto;padding:18px 14px 100px}
-h1{font-size:30px}h2{font-size:21px}
-p{color:#d0c8b9;line-height:1.6}
-.gold{color:var(--gold)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;margin:13px 0}
-.hero{background:radial-gradient(ellipse at top right,#51401d,#17130b 50%,#101010);border:1px solid #655025;border-radius:22px;padding:25px;margin-bottom:20px}
-button{font-size:14px;cursor:pointer}
-.btn{padding:12px 15px;border:1px solid var(--gold);border-radius:10px;background:var(--gold);color:#15110a;font-weight:bold}
-.btn.alt{background:transparent;color:var(--gold)}
-.btn.dark{background:#211d14;color:white;border-color:var(--line)}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.tile{background:linear-gradient(145deg,#282010,#151515);border:1px solid #49391e;border-radius:14px;padding:15px;color:white;text-align:left;min-height:105px}
-.tile b{display:block;margin:10px 0 6px}
-.tile span{color:var(--muted);font-size:12px}
-.symbol{font-size:24px;color:var(--gold)}
-.member{overflow:hidden;padding:0}
-.art{height:135px;display:grid;place-items:center;background:radial-gradient(circle,#6a522d,#211b10);font-size:56px}
-.details{padding:13px}
-label{display:block;color:var(--gold);font-size:13px;margin:13px 0 7px}
-input,select,textarea{width:100%;padding:12px;background:#0d0d0d;border:1px solid #4a4030;color:white;border-radius:9px}
-textarea{min-height:80px}
-.muted{font-size:12px;color:var(--muted)}
-.pill{display:inline-block;border:1px solid #59451f;border-radius:30px;padding:5px 9px;color:var(--gold);font-size:11px}
-.plan{border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0}
-.featured{border-color:var(--gold);background:#211a0c}
-.price{font-size:27px;color:var(--gold);font-weight:bold}
-.notice{border-left:3px solid var(--gold);padding:12px;background:#211b10;color:#d9cba9;font-size:12px;line-height:1.6;margin:15px 0}
-nav{position:fixed;bottom:0;left:0;right:0;background:#0b0b0bf5;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:8;padding:8px 0 max(8px,env(safe-area-inset-bottom))}
-nav button{background:none;border:0;color:#aaa;font-size:10px;padding:5px 0}
-nav button span{display:block;font-size:20px;margin-bottom:4px}
-nav button.active{color:var(--gold)}
-.hidden{display:none!important}
-footer{text-align:center;color:#777;font-size:11px;padding:20px}
-@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{padding:35px}}
+body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:active{transform:scale(.98)}
+header{padding:17px 20px;background:#100e0b;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
+.logo{font-size:24px;font-weight:900;letter-spacing:3px;color:var(--gold)}
+.logo small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:4px}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 70px)}
+aside{padding:15px;border-right:1px solid var(--line);background:#100e0b}
+nav button,.btn{padding:12px;border:1px solid var(--line);background:#1b1813;color:var(--text);border-radius:10px}
+nav button{display:block;width:100%;text-align:left;margin:5px 0}
+nav button.active,nav button:hover{background:#392b16;color:var(--gold);border-color:var(--gold)}
+.gold{background:var(--gold)!important;color:#171109!important;border:0!important;font-weight:bold}
+main{padding:23px;min-width:0}
+h1{font-size:30px;margin:8px 0}
+h2{font-size:21px}
+p{line-height:1.55}
+.muted{color:var(--muted)}
+.eyebrow{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:bold}
+.panel,.stat,.card{background:linear-gradient(145deg,#1c1914,#12100e);border:1px solid var(--line);border-radius:16px;padding:17px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.stat span{font-size:12px;color:var(--muted)}
+.stat strong{display:block;font-size:27px;color:var(--gold);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.card{padding:0;overflow:hidden;margin:0}
+.photo{height:145px;display:grid;place-items:center;font-size:65px;background:linear-gradient(140deg,#594329,#211911)}
+.cardbody{padding:13px}
+.card h3{margin:0 0 8px}
+.tag{display:inline-block;padding:5px 8px;margin:3px;border:1px solid var(--line);border-radius:20px;font-size:11px;color:var(--gold)}
+.card-actions{display:flex;gap:7px;margin-top:12px}
+.card-actions button{flex:1;font-size:12px;padding:9px 5px}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.quick button{padding:15px 5px;text-align:center}
+.quick span{display:block;font-size:23px;margin-bottom:7px}
+.field{margin:13px 0}
+label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);background:#0e0d0b;color:white;border-radius:9px}
+textarea{min-height:100px}
+.row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#45331b;font-size:24px;flex-shrink:0}
+.row .grow{flex:1;min-width:0}
+.row p{margin:5px 0;font-size:12px;color:var(--muted)}
+.notice{background:#251d10;border:1px solid #604923;color:#e9d5a3;padding:12px;border-radius:10px;font-size:12px;line-height:1.6;margin:12px 0}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.price{font-size:25px;color:var(--gold);font-weight:bold}
+.plan{background:#171411;border:1px solid var(--line);border-radius:15px;padding:16px}
+.plan.featured{border-color:var(--gold)}
+.plan li{margin:10px 0;color:var(--muted);font-size:13px}
+.bubble{background:#29231a;padding:11px;border-radius:12px;margin:8px 0;max-width:85%;overflow-wrap:anywhere}
+.mine{background:#5b431e;margin-left:auto}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#160f05;padding:12px 18px;border-radius:10px;display:none;z-index:10}
+footer{text-align:center;color:#8d8271;padding:20px;font-size:11px}
+#mobile{display:none}
+@media(max-width:750px){
+.layout{display:block}aside{display:none}main{padding:15px 12px 85px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stats{grid-template-columns:repeat(2,1fr)}
+.plans{grid-template-columns:1fr}
+.quick{grid-template-columns:repeat(2,1fr)}
+#mobile{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:8;background:#100e0b;border-top:1px solid var(--line);justify-content:space-around;padding:7px 2px}
+#mobile button{border:0;background:transparent;color:var(--muted);font-size:10px;padding:5px;flex:1}
+#mobile span{display:block;font-size:19px;margin-bottom:3px}
+#mobile button.active{color:var(--gold)}
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">TRY ME<small>YOUR JOURNEY TO FOREVER</small></div>
-  <button class="btn alt" onclick="page('profile')">My Profile</button>
-</header>
-<main id="app"></main>
-<nav id="nav">
-<button data-page="home" onclick="page('home')"><span>⌂</span>Home</button>
-<button data-page="discover" onclick="page('discover')"><span>♡</span>Discover</button>
-<button data-page="matches" onclick="page('matches')"><span>✦</span>Matches</button>
-<button data-page="messages" onclick="page('messages')"><span>▤</span>Messages</button>
-<button data-page="profile" onclick="page('profile')"><span>◉</span>Profile</button>
-</nav>
+<div id="app"></div>
+<div id="toast"></div>
 <script>
-const OWNER="balesaniccur@gmail.com";
+const $=id=>document.getElementById(id);
 const people=[
-{id:1,name:"Amina",age:26,country:"Kenya",goal:"Marriage",emoji:"🌹",bio:"I value honesty, family and meaningful conversations.",interests:"Travel · Cooking · Family"},
-{id:2,name:"Daniel",age:29,country:"Uganda",goal:"Marriage",emoji:"🤵",bio:"Looking for a genuine partner to build a future with.",interests:"Business · Nature · Music"},
-{id:3,name:"Grace",age:25,country:"Tanzania",goal:"Serious Relationship",emoji:"🌷",bio:"I enjoy laughter, new experiences and deep conversations.",interests:"Travel · Reading · Art"},
-{id:4,name:"Michael",age:31,country:"Kenya",goal:"Marriage",emoji:"⭐",bio:"Respect, trust and commitment matter to me.",interests:"Fitness · Family · Travel"},
-{id:5,name:"Zuri",age:27,country:"Rwanda",goal:"Marriage",emoji:"🌺",bio:"Hoping to find a sincere connection that grows into forever.",interests:"Culture · Nature · Music"},
-{id:6,name:"Samuel",age:28,country:"Ghana",goal:"Serious Relationship",emoji:"🕊️",bio:"Kindness and communication are important to me.",interests:"Reading · Food · Travel"}
+{id:1,n:"Amara",age:27,place:"Nairobi, Kenya",e:"👩🏽",goal:"Marriage",bio:"Family-oriented, warm-hearted and ready for a meaningful connection.",tags:"Family • Travel • Faith"},
+{id:2,n:"Daniel",age:30,place:"Kampala, Uganda",e:"👨🏿",goal:"Marriage",bio:"Honest, thoughtful and serious about finding a life partner.",tags:"Business • Cooking • Nature"},
+{id:3,n:"Nia",age:25,place:"Dar es Salaam, Tanzania",e:"👩🏾",goal:"Serious relationship",bio:"I love kindness, deep conversations and growing together.",tags:"Music • Reading • Travel"},
+{id:4,n:"Ethan",age:29,place:"London, UK",e:"👨🏻",goal:"Marriage",bio:"Looking for a genuine connection built on trust and laughter.",tags:"Fitness • Family • Culture"},
+{id:5,n:"Zuri",age:28,place:"Mombasa, Kenya",e:"👩🏿",goal:"Marriage",bio:"Adventurous spirit with traditional values and a big heart.",tags:"Beach • Food • Faith"},
+{id:6,n:"Noah",age:31,place:"Kigali, Rwanda",e:"👨🏾",goal:"Marriage",bio:"Respectful, purposeful and excited to meet my person.",tags:"Technology • Hiking • Family"}
 ];
-let s={page:"welcome",name:"",age:18,country:"Kenya",goal:"Marriage",bio:"",interests:[],likes:[],matches:[],chats:{}};
-try{s={...s,...JSON.parse(localStorage.getItem("tryme_v1")||"{}")}}catch(e){}
-const app=document.getElementById("app");
-function save(){try{localStorage.setItem("tryme_v1",JSON.stringify(s))}catch(e){}}
-function page(p){s.page=p;save();render();window.scrollTo(0,0)}
-function button(t,fn,cls=""){return `<button class="btn ${cls}" onclick="${fn}">${t}</button>`}
-function heading(t,sub=""){return `<h2>${t}</h2>${sub?`<p class="muted">${sub}</p>`:""}`}
-function note(){return `<div class="notice">DEMO MODE: Profiles and interactions are examples. Real accounts, messaging and payments are not connected yet.</div>`}
-function welcome(){return `<div class="hero"><div class="gold">A NEW CHAPTER STARTS HERE</div><h1>Find your <span class="gold">forever.</span></h1><p>Meet people who share your values. Discover meaningful relationships and build a future together.</p><div class="actions">${button("Create My Profile","page('signup')")}${button("Explore Portal","guest()","alt")}</div><p class="muted">Worldwide · Adults 18+ · Love with intention</p></div><div class="card">${heading("Welcome to TRY ME","More than a dating app. It's a journey to forever.")}<div class="grid"><div class="tile"><span class="symbol">♡</span><b>Real intentions</b><span>Marriage and serious relationships</span></div><div class="tile"><span class="symbol">✦</span><b>Shared values</b><span>Discover what matters to you</span></div></div></div><div class="card"><h3>18+ age requirement</h3><p>This portal is intended for adults aged 18 and above. Please use it respectfully and protect your personal information.</p>${button("I'm 18+ · Continue","page('signup')")}</div>`}
-function signup(){return `${heading("Create your profile","Tell us a little about yourself")}<div class="card"><form onsubmit="create(event"><label>Display name</label><input name="name" required maxlength="40" placeholder="Your display name"><label>Age (18+)</label><input name="age" type="number" min="18" max="100" value="18" required><label>Country</label><select name="country"><option>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Nigeria</option><option>Ghana</option><option>South Africa</option><option>United Kingdom</option><option>United States</option><option>Other</option></select><label>Relationship goal</label><select name="goal"><option>Marriage</option><option>Serious Relationship</option><option>Friendship</option><option>Not Sure Yet</option></select><label>About you</label><textarea name="bio" maxlength="300" placeholder="Describe yourself"></textarea><label><input type="checkbox" required style="width:auto"> I confirm that I am at least 18 years old.</label><div class="actions"><button class="btn">Continue</button>${button("Back","page('welcome')","alt")}</div></form></div><p class="muted">Prototype only: this profile is saved on your device, not registered online.</p>`}
-function create(e){e.preventDefault();let f=new FormData(e.target);if(+f.get("age")<18)return alert("You must be 18 or older.");s.name=f.get("name").trim();s.age=+f.get("age");s.country=f.get("country");s.goal=f.get("goal");s.bio=f.get("bio");save();page("interests")}
-function interests(){let a=["Family","Travel","Faith","Music","Cooking","Business","Nature","Fitness","Reading","Art","Culture","Sports"];return `${heading("Your interests","Choose a few things you enjoy")}<div class="card"><div class="grid">${a.map(x=>`<button class="tile" onclick="interest('${x}')" style="border-color:${s.interests.includes(x)?"var(--gold)":"var(--line)"}">${s.interests.includes(x)?"✓":"♡"}<b>${x}</b></button>`).join("")}</div><div class="actions">${button("Enter TRY ME","page('home')")}</div></div>`}
-function interest(x){s.interests=s.interests.includes(x)?s.interests.filter(y=>y!==x):[...s.interests,x];save();render()}
-function guest(){s.name="Guest";s.age=25;save();page("home")}
-function home(){return `<div class="hero"><div class="gold">YOUR PERSONAL PORTAL</div><h1>Welcome${s.name?", "+esc(s.name):""} 💛</h1><p>Your next meaningful connection could begin with a conversation.</p>${button("Discover Members","page('discover')")}</div><div class="grid"><div class="card"><div class="price">${s.likes.length}</div><span class="muted">Likes sent</span></div><div class="card"><div class="price">${s.matches.length}</div><span class="muted">Demo matches</span></div></div>${heading("Your dashboard","Everything in one place")}<div class="grid">${tile("♡","Discover","Meet members","discover")}${tile("✦","Likes & Matches","Your connections","matches")}${tile("▤","Messages","Sample inbox","messages")}${tile("◉","My Profile","Edit your details","profile")}${tile("♛","Premium","Membership plans","premium")}${tile("◇","Offers & Events","Community updates","events")}${tile("✧","Contact AI","Relationship guidance","ai")}${tile("✉","Contact Owner","Talk to our team","owner")}${tile("⚙","Settings","Manage your demo","settings")}</div>${note()}`}
-function tile(sym,title,sub,p){return `<button class="tile" onclick="page('${p}')"><span class="symbol">${sym}</span><b>${title}</b><span>${sub}</span></button>`}
-function member(m){return `<div class="card member"><div class="art">${m.emoji}</div><div class="details"><h3>${m.name}, ${m.age}</h3><span class="pill">${m.goal}</span><p>⌖ ${m.country}</p><p>${m.bio}</p><p class="muted">${m.interests}</p><div class="actions">${button(s.likes.includes(m.id)?"♥ Liked":"♡ Like",`like(${m.id})`,"")}${button("Message",`chat(${m.id})`,"alt")}</div></div></div>`}
-function discover(){return `${heading("Discover","Sample members from around the world")}<div class="grid">${people.map(member).join("")}</div>${note()}`}
-function like(id){if(!s.likes.includes(id))s.likes.push(id);if(!s.matches.includes(id)&&s.likes.length%2===0)s.matches.push(id);save();render();alert("Demo like saved on this device. This is not a real member connection.")}
-function matches(){let a=people.filter(m=>s.likes.includes(m.id)||s.matches.includes(m.id));return `${heading("Likes & Matches","People you interacted with in the demo")}${a.length?`<div class="grid">${a.map(member).join("")}</div>`:`<div class="card"><p>No connections yet. Discover members to try the feature.</p>${button("Discover","page('discover')")}</div>`}${note()}`}
-function messages(){return `${heading("Messages","Sample conversations")}<div class="card"><p>Real private messaging requires secure accounts and a backend.</p>${people.slice(0,4).map(m=>`<button class="tile" style="width:100%;margin:5px 0" onclick="chat(${m.id})"><b>${m.emoji} ${m.name}</b><span>Open demo conversation →</span></button>`).join("")}</div>${note()}`}
-function chat(id){let m=people.find(x=>x.id===id);let arr=s.chats[id]||[];app.innerHTML=`${heading("Chat with "+m.name,"Demo conversation only")}<div class="card"><div class="notice">${m.name}: Hello! What matters most to you in a relationship?</div>${arr.map(t=>`<p style="text-align:right;color:var(--gold)">${esc(t)}</p>`).join("")}<form onsubmit="send(event,${id})"><label>Your message</label><textarea name="text" required maxlength="500"></textarea><div class="actions"><button class="btn">Add demo message</button>${button("Back","page('messages')","alt")}</div></form></div>${note()}`}
-function send(e,id){e.preventDefault();s.chats[id]=[...(s.chats[id]||[]),new FormData(e.target).get("text")];save();chat(id)}
-function profile(){return `${heading("My Profile","Your personal introduction")}<div class="card"><div class="art">◉</div><form onsubmit="saveProfile(event)"><label>Display name</label><input name="name" required value="${esc(s.name)}"><label>Age</label><input name="age" type="number" min="18" max="100" value="${s.age}"><label>Country</label><input name="country" value="${esc(s.country)}"><label>Relationship goal</label><select name="goal">${["Marriage","Serious Relationship","Friendship","Not Sure Yet"].map(x=>`<option ${s.goal===x?"selected":""}>${x}</option>`).join("")}</select><label>About me</label><textarea name="bio">${esc(s.bio)}</textarea><p class="muted">Interests: ${s.interests.map(esc).join(" · ")||"Not selected"}</p><div class="actions"><button class="btn">Save profile</button>${button("Edit interests","page('interests')","alt")}</div></form></div>${note()}`}
-function saveProfile(e){e.preventDefault();let f=new FormData(e.target);if(+f.get("age")<18)return alert("You must be 18 or older.");s.name=f.get("name");s.age=+f.get("age");s.country=f.get("country");s.goal=f.get("goal");s.bio=f.get("bio");save();alert("Demo profile saved.");render()}
-function premium(){return `${heading("Membership","Choose your journey")}<div class="plan"><span class="pill">STARTER</span><h2>Free</h2><div class="price">KSh 0</div><p>Explore profiles and try the demo.</p>${button("Current plan","alert('You are using the free demo.')","alt")}</div><div class="plan featured"><span class="pill">POPULAR</span><h2>Premium</h2><div class="price">KSh 500 <small>/ month</small></div><p>Proposed enhanced discovery and profile features.</p>${button("Choose Premium","payDemo()")}</div><div class="plan"><span class="pill">EXCLUSIVE</span><h2>Premium Plus</h2><div class="price">KSh 1,000 <small>/ month</small></div><p>Proposed priority features and enhanced preferences.</p>${button("Choose Premium Plus","payDemo()")}</div><div class="notice">These are proposed prices. Payments are not connected; no money will be charged.</div>`}
-function payDemo(){alert("Payment is not connected yet. No money has been charged.")}
-function events(){return `${heading("Offers & Events","Building meaningful connections")}<div class="card"><span class="pill">COMING SOON</span><h3>Virtual Meet & Greet</h3><p>Meet adults and share conversations in a moderated online event.</p></div><div class="card"><span class="pill">COMMUNITY</span><h3>Relationship Conversations</h3><p>Ideas about communication, respect, boundaries and marriage preparation.</p></div>${note()}`}
-function ai(){return `${heading("TRY ME AI","Relationship guidance demo")}<div class="card"><p>Ask a general question about healthy relationships, communication or dating safety.</p><form onsubmit="ask(event)"><label>Your question</label><textarea name="q" required></textarea><button class="btn">Get guidance</button></form><div id="answer"></div></div><div class="notice">This is a basic demo, not a connected AI service. Never share passwords or financial information.</div>`}
-function ask(e){e.preventDefault();let q=new FormData(e.target).get("q").toLowerCase(),a="Communicate openly, respect boundaries and look for consistent actions rather than promises.";if(q.includes("money")||q.includes("scam"))a="Be cautious of requests for money or verification codes. Never send money to prove love.";else if(q.includes("marriage")||q.includes("serious"))a="Discuss values, children, finances, family expectations and timelines honestly. Take time to understand each other.";else if(q.includes("meet")||q.includes("safe"))a="Meet in a public place, arrange your own transport and tell someone you trust where you will be.";document.getElementById("answer").innerHTML=`<div class="notice">${esc(a)}</div>`}
-function owner(){return `${heading("Contact the Owner","Questions and suggestions")}<div class="card"><div class="art">✉</div><h2>Let's build TRY ME together.</h2><p>Send feedback or suggest features for the portal.</p><p class="gold">${OWNER}</p><div class="actions"><a class="btn" href="mailto:${OWNER}?subject=TRY%20ME%20Feedback" style="text-decoration:none">Email Owner</a><button class="btn alt" onclick="prompt('Copy this email', '${OWNER}')">Show email</button></div></div>`}
-function settings(){return `${heading("Settings","Manage your demo")}<div class="card"><h3>Account</h3><p>Local demo profile only.</p>${button("Edit Profile","page('profile')")}</div><div class="card"><h3>Privacy & Safety</h3><p>Keep sensitive information private. Never send money to strangers.</p></div><div class="card"><h3>Notifications</h3><p class="muted">Notifications are not connected.</p></div><div class="card"><h3>Reset demo</h3><p class="muted">Clear saved demo information on this device.</p>${button("Reset","reset()","alt")}</div>`}
-function reset(){if(confirm("Clear TRY ME demo data?")){localStorage.removeItem("tryme_v1");s={page:"welcome",name:"",age:18,country:"Kenya",goal:"Marriage",bio:"",interests:[],likes:[],matches:[],chats:{}};render()}}
-function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function render(){let pages={welcome,signup,interests,home,discover,matches,messages,profile,premium,events,ai,owner,settings};app.innerHTML=(pages[s.page]||home)();document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===s.page));document.getElementById("nav").classList.toggle("hidden",["welcome","signup","interests"].includes(s.page))}
+let user=null,page="dashboard",likes=[],messages={},chat=1;
+try{
+let old=JSON.parse(localStorage.getItem("tryme")||"null");
+if(old){user=old.user;likes=old.likes||[];messages=old.messages||{}}
+}catch(e){}
+const nav=[
+["dashboard","⌂","Dashboard"],["discover","♡","Discover"],
+["matches","💛","Likes & Matches"],["messages","✉","Messages"],
+["offers","✦","Offers & Events"],["ai","✧","Contact AI"],
+["owner","☏","Contact Me"],["profile","◉","My Profile"],
+["premium","♛","Premium"],["settings","⚙","Settings"]
+];
+function save(){try{localStorage.setItem("tryme",JSON.stringify({user,likes,messages}))}catch(e){}}
+function toast(t){$("toast").textContent=t;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
+function go(p){page=p;render();window.scrollTo(0,0)}
+function heading(k,t,d){return `<div class="eyebrow">${k}</div><h1>${t}</h1><p class="muted">${d}</p>`}
+function card(p){return `<article class="card"><div class="photo">${p.e}</div><div class="cardbody"><h3>${p.n}, ${p.age}</h3><div class="muted" style="font-size:12px">${p.place}</div><span class="tag">${p.goal}</span><p style="font-size:13px">${p.bio}</p><span class="tag">${p.tags}</span><div class="card-actions"><button class="btn gold" onclick="like(${p.id})">${likes.includes(p.id)?"♥ Liked":"♡ Like"}</button><button class="btn" onclick="openChat(${p.id})">✉ Message</button></div></div></article>`}
+function shell(content){
+return `<header><div class="logo">TRY ME<small>FIND YOUR FOREVER</small></div><button class="btn" onclick="go('premium')">♛ Premium</button></header><div class="layout"><aside><div class="eyebrow">YOUR DASHBOARD</div>${nav.map(n=>`<button class="${page===n[0]?"active":""}" onclick="go('${n[0]}')">${n[1]} &nbsp; ${n[2]}</button>`).join("")}<div class="notice">Love with intention. Be honest, respectful and stay safe.</div></aside><main>${content}<footer>TRY ME · More than dating. A journey to forever.</footer></main></div><nav id="mobile">${[nav[0],nav[1],nav[2],nav[3],nav[7]].map(n=>`<button class="${page===n[0]?"active":""}" onclick="go('${n[0]}')"><span>${n[1]}</span>${n[2]}</button>`).join("")}</nav>`
+}
+function dashboard(){
+return `<div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div><h1>Welcome${user?.name?", "+user.name:""} ✨</h1><p class="muted">Meet people who are looking for something meaningful, too.</p>
+<div class="stats"><div class="stat"><span>Profiles to discover</span><strong>${people.length}</strong></div><div class="stat"><span>Your likes</span><strong>${likes.length}</strong></div><div class="stat"><span>Messages</span><strong>${Object.values(messages).flat().length}</strong></div><div class="stat"><span>Membership</span><strong style="font-size:19px">FREE</strong></div></div>
+<div class="panel"><h2>Your TRY ME space</h2><p class="muted">All your features, together in one dashboard.</p><div class="quick">${[["discover","♡","Discover"],["matches","💛","Likes & Matches"],["messages","✉","Messages"],["offers","✦","Offers & Events"],["ai","✧","Contact AI"],["owner","☏","Contact Me"],["profile","◉","My Profile"],["premium","♛","Premium"]].map(x=>`<button class="btn" onclick="go('${x[0]}')"><span>${x[1]}</span>${x[2]}</button>`).join("")}</div></div>
+<h2>People you may like</h2><p class="muted">Fictional sample profiles for the prototype.</p><div class="grid">${people.slice(0,3).map(card).join("")}</div>
+<div class="panel" style="margin-top:16px"><h2>💌 Your journey</h2><p class="muted">Complete your profile, explore members and start with a friendly hello.</p><button class="btn gold" onclick="go('profile')">Complete my profile</button></div>`
+}
+function discover(){return heading("MEET WITH PURPOSE","Discover people","Search profiles and explore shared relationship goals.")+`<input id="search" placeholder="Search name, country or interest..." oninput="filterPeople()" style="margin:12px 0"><div class="notice">These are sample profiles, not real members.</div><div id="people" class="grid">${people.map(card).join("")}</div>`}
+function filterPeople(){let q=$("search").value.toLowerCase();$("people").innerHTML=people.filter(p=>(p.n+" "+p.place+" "+p.tags+" "+p.goal).toLowerCase().includes(q)).map(card).join("")||"No profiles found."}
+function matches(){let ps=people.filter(p=>likes.includes(p.id));return heading("YOUR CONNECTIONS","Likes & Matches","Review the profiles you have liked.")+(ps.length?`<div class="grid">${ps.map(card).join("")}</div>`:`<div class="panel"><h2>♡ No likes yet</h2><p class="muted">Explore profiles and tap Like to save them here.</p><button class="btn gold" onclick="go('discover')">Discover people</button></div>`)+`<div class="notice">Real mutual matching requires a connected backend and real member accounts.</div>`}
+function messagesPage(){
+let ids=[...new Set([...Object.keys(messages).map(Number),...likes])];if(!ids.length)ids=[1,2];if(!ids.includes(chat))chat=ids[0];
+let p=people.find(x=>x.id===chat),list=messages[chat]||[];
+return heading("CONVERSATIONS","Messages","Chat preview for testing. Messages are saved in this browser.")+`<div class="panel"><h3>Conversation with ${p.n}</h3><div class="notice">Demo chat only. This does not send messages to real people.</div><div style="min-height:180px">${list.map(m=>`<div class="bubble ${m.mine?"mine":""}">${escapeHTML(m.text)}</div>`).join("")||'<p class="muted">Say hello and start a demo conversation.</p>'}</div><form onsubmit="send(event)"><input id="msg" placeholder="Write a message..." maxlength="500" required><button class="btn gold" style="margin-top:9px">Send message</button></form><h3>Choose a conversation</h3>${ids.map(id=>{let q=people.find(x=>x.id===id);return `<button class="btn" style="margin:4px" onclick="openChat(${id})">${q.e} ${q.n}</button>`}).join("")}</div>`
+}
+function offers(){return heading("COMMUNITY","Offers & Events","Ideas for meaningful connections and relationship growth.")+`<div class="panel"><div class="eyebrow">COMMUNITY EVENT</div><h2>🌹 Intentional Dating Meetup</h2><p class="muted">A future event concept for adults who want to meet respectfully and discuss long-term relationships.</p><button class="btn gold" onclick="toast('Event registration is not available yet.')">Register interest</button></div><div class="panel"><h2>💛 Relationship tips</h2><p>01 · Start with a thoughtful question.</p><p>02 · Be honest about what you want.</p><p>03 · Meet in public and tell a trusted person.</p><button class="btn" onclick="go('ai')">Get relationship guidance</button></div><div class="notice">Events and promotions are previews. Event registration is not connected.</div>`}
+function aiPage(){return heading("A FRIENDLY GUIDE","Contact AI","Get relationship advice and conversation ideas.")+`<div class="panel"><label>What do you need help with?</label><select id="topic"><option value="hello">Starting a conversation</option><option value="marriage">Explaining I want marriage</option><option value="safety">Boundaries and safety</option><option value="profile">Improving my profile</option></select><button class="btn gold" style="margin-top:12px" onclick="askAI()">Get guidance</button><div id="answer" class="notice" style="display:none"></div><p class="muted">This is a built-in guide, not a live AI connection.</p></div>`}
+function owner(){return heading("WE'RE HERE TO LISTEN","Contact Me","Send feedback or questions to the TRY ME owner.")+`<div class="panel"><h2>✉ TRY ME Support</h2><form onsubmit="contactOwner(event)"><div class="field"><label>Your name</label><input id="oname" value="${escapeHTML(user?.name||"")}" required></div><div class="field"><label>Your email</label><input id="oemail" type="email" required placeholder="you@example.com"></div><div class="field"><label>Subject</label><input id="subject" required></div><div class="field"><label>Message</label><textarea id="body" required></textarea></div><button class="btn gold">Open email app</button></form><div class="notice">The email app opens so you can review and send the message yourself.</div></div>`}
+function profile(){return heading("YOUR STORY","My Profile","Edit your profile details on this device.")+`<div class="panel"><form onsubmit="saveProfile(event)"><div class="field"><label>Name</label><input id="pname" required value="${escapeHTML(user?.name||"")}"></div><div class="field"><label>Age (18+)</label><input id="age" type="number" min="18" max="100" required value="${user?.age||18}"></div><div class="field"><label>Country</label><input id="country" value="${escapeHTML(user?.country||"")}"></div><div class="field"><label>City</label><input id="city" value="${escapeHTML(user?.city||"")}"></div><div class="field"><label>Relationship goal</label><select id="goal"><option>Marriage</option><option>Serious relationship</option><option>Friendship</option></select></div><div class="field"><label>About me</label><textarea id="bio" placeholder="Tell people about your values and interests">${escapeHTML(user?.bio||"")}</textarea></div><button class="btn gold">Save profile</button></form><div class="notice">Real photo uploads, account verification and online profile storage are not yet connected.</div></div>`}
+function premium(){return heading("MEMBERSHIP","Premium plans","Preview of possible membership options. No payments are active.")+`<div class="plans"><div class="plan"><h2>Free</h2><div class="price">KSh 0</div><ul><li>Browse sample profiles</li><li>Save likes</li><li>Basic profile</li></ul><button class="btn" onclick="go('discover')">Explore</button></div><div class="plan featured"><div class="eyebrow">POPULAR</div><h2>Premium</h2><div class="price">KSh 500/mo</div><ul><li>Future advanced filters</li><li>Future profile boosts</li><li>More discovery options</li></ul><button class="btn gold" onclick="toast('Payment is not connected.')">Preview plan</button></div><div class="plan"><h2>Premium Plus</h2><div class="price">KSh 1,000/mo</div><ul><li>Future priority support</li><li>Future curated introductions</li><li>Future event benefits</li></ul><button class="btn" onclick="toast('Payment is not connected.')">Preview plan</button></div></div>`}
+function settings(){return heading("YOUR CONTROL","Settings","Basic settings for this browser demo.")+`<div class="panel"><h2>Privacy & safety</h2><p class="muted">TRY ME is intended for adults aged 18 and above. Never send money to strangers or share verification codes.</p><button class="btn" onclick="if(confirm('Clear your local likes and messages?')){likes=[];messages={};save();render();}">Clear demo likes and messages</button><hr style="border-color:var(--line);margin:20px 0"><button class="btn" onclick="go('owner')">Contact owner</button> <button class="btn" onclick="user=null;save();render()">Sign out</button><div class="notice">Reporting, blocking, secure accounts and production privacy controls still need backend development.</div></div>`}
+function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+if(!user){$("app").innerHTML=`<div style="max-width:470px;margin:8vh auto;padding:22px"><div class="logo">TRY ME<small>FIND YOUR FOREVER</small></div><div class="panel" style="margin-top:25px"><div class="eyebrow">A MORE INTENTIONAL WAY TO MEET</div><h1>Love deserves a real chance.</h1><p class="muted">Meet people who want meaningful relationships and marriage.</p><form onsubmit="signup(event)"><div class="field"><label>Your name</label><input id="name" required maxlength="50"></div><div class="field"><label>Your age</label><input id="signupAge" type="number" min="18" max="100" required></div><label><input id="adult" type="checkbox" required style="width:auto"> I confirm I am 18 or older.</label><button class="btn gold" style="width:100%;margin-top:15px">Enter TRY ME →</button></form><div class="notice">Demo prototype. It does not create a real online account.</div></div></div>`;return}
+let pages={dashboard,discover,matches,messages:messagesPage,offers,ai:aiPage,owner,profile,premium,settings};
+$("app").innerHTML=shell((pages[page]||dashboard)());
+}
+function signup(e){e.preventDefault();let age=Number($("signupAge").value);if(age<18){toast("You must be 18 or older.");return}user={name:$("name").value.trim(),age,country:"",city:"",goal:"Marriage",bio:""};save();go("dashboard")}
+function like(id){if(likes.includes(id))likes=likes.filter(x=>x!==id);else likes.push(id);save();render();toast("Your demo likes have been updated.")}
+function openChat(id){chat=id;go("messages")}
+function send(e){e.preventDefault();let text=$("msg").value.trim();if(!text)return;messages[chat]=messages[chat]||[];messages[chat].push({mine:true,text});save();render()}
+function askAI(){let a={hello:"Try: Hi! I noticed you enjoy travelling. What place has stayed in your heart the most?",marriage:"You could say: I'm looking for a genuine relationship that can grow toward marriage. I'd like us to get to know each other and see if our values align.",safety:"Healthy signs include respect, consistency and honesty. Be cautious of pressure, requests for money, threats or attempts to isolate you.",profile:"Describe your values, interests and relationship goals honestly. Keep sensitive personal details private."};$("answer").textContent=a[$("topic").value];$("answer").style.display="block"}
+function contactOwner(e){e.preventDefault();let body="From: "+$("oname").value+"\nReply email: "+$("oemail").value+"\n\n"+$("body").value;location.href="mailto:balesaniccur@gmail.com?subject="+encodeURIComponent($("subject").value)+"&body="+encodeURIComponent(body)}
+function saveProfile(e){e.preventDefault();user={...user,name:$("pname").value,age:Number($("age").value),country:$("country").value,city:$("city").value,goal:$("goal").value,bio:$("bio").value};save();render();toast("Profile saved on this device.")}
 render();
 </script>
-<footer>TRY ME © 2026 · More than a dating app. A journey to forever.</footer>
 </body>
 </html>
